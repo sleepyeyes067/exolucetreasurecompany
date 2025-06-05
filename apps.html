@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Exoluce Treasure</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+tailwind.config={
+theme:{
+extend:{
+colors:{
+primary:'#6366f1',
+secondary:'#f59e0b'
+},
+borderRadius:{
+'none':'0px',
+'sm':'4px',
+DEFAULT:'8px',
+'md':'12px',
+'lg':'16px',
+'xl':'20px',
+'2xl':'24px',
+'3xl':'32px',
+'full':'9999px',
+'button':'8px'
+},
+screens: {
+'mobile': '480px'
+}
+}
+}
+}
+</script>
+<style>
+body {
+max-width: 100%;
+margin: 0 auto;
+background: rgb(249, 250, 251);
+position: relative;
+min-height: 100vh;
+padding-bottom: 100px;
+}
+.glass-effect {
+backdrop-filter: blur(12px);
+background: rgba(255, 255, 255, 0.8);
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Poppins', sans-serif;
+padding-bottom: 60px;
+}
+.cart-panel {
+transform: translateX(100%);
+transition: transform 0.3s ease-in-out;
+}
+.cart-panel.open {
+transform: translateX(0);
+}
+.product-card:hover .quick-add {
+opacity: 1;
+}
+.quick-add {
+opacity: 0;
+transition: opacity 0.2s ease;
+}
+.category-tabs::-webkit-scrollbar {
+display: none;
+}
+</style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+<!-- Header -->
+<header class="fixed top-0 w-full glass-effect z-50">
+<div class="flex items-center justify-between px-6 py-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100/80 transition-colors">
+<i class="ri-menu-line ri-xl"></i>
+</div>
+<h1 class="text-2xl font-['Pacifico'] text-gray-800">Exoluce Treasure</h1>
+<div class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100/80 transition-colors relative cursor-pointer" id="cart-icon">
+<i class="ri-shopping-bag-line ri-xl"></i>
+<span id="cart-count" class="absolute -top-1 -right-1 bg-primary text-white text-xs font-medium rounded-full w-5 h-5 flex items-center justify-center shadow-lg shadow-primary/20">0</span>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 pb-3">
+<div class="relative">
+<input type="text" placeholder="Search products..." class="w-full py-2 pl-10 pr-4 bg-gray-100 rounded-button border-none focus:outline-none focus:ring-2 focus:ring-primary text-sm">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center">
+<i class="ri-search-line text-gray-500"></i>
+</div>
+</div>
+</div>
+<!-- Category Tabs -->
+<div class="overflow-x-auto category-tabs">
+<div class="flex space-x-2 px-4 pb-3 whitespace-nowrap">
+<button class="px-4 py-2 bg-primary text-white rounded-full text-sm font-medium">All</button>
+<button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">T-shirts</button>
+<button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">Baggy Pants</button>
+<button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">Accessories</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="mt-36 px-4">
+<!-- Featured Banner -->
+<div class="rounded-lg overflow-hidden mb-6">
+<img src="https://readdy.ai/api/search-image?query=Fashion%20store%20banner%20with%20modern%20clothing%20display%2C%20stylish%20t-shirts%20and%20baggy%20pants%20arranged%20aesthetically%2C%20soft%20lighting%2C%20minimalist%20design%2C%20high-end%20fashion%20photography%2C%20promotional%20banner%20for%20Exoluce%20Treasure%20clothing%20brand&width=375&height=150&seq=1&orientation=landscape" alt="Featured Collection" class="w-full h-full object-cover">
+</div>
+<!-- Products Grid -->
+<h2 class="text-xl font-semibold mb-4">New Arrivals</h2>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<!-- Product 1 -->
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://static.readdy.ai/image/13905a4d2f1acf59935174a7b8448255/73c7dfedcce8e132031817ca3fbc8048.png" alt="Dreams T-shirt" class="w-full h-44 object-cover object-top">
+<button class="quick-add absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full w-8 h-8 flex items-center justify-center shadow-md" data-id="16" data-name="Never Forget Dreams Tee" data-price="2699" data-image="https://static.readdy.ai/image/13905a4d2f1acf59935174a7b8448255/73c7dfedcce8e132031817ca3fbc8048.png">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-sm font-medium truncate">Never Forget Dreams Tee</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-semibold">₱2,699</span>
+<span class="text-xs text-gray-500">S/M/L/XL</span>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=Stylish%20oversized%20white%20t-shirt%20with%20minimal%20design%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=2&orientation=portrait" alt="Oversized Tee" class="w-full h-44 object-cover object-top">
+<button class="quick-add absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full w-8 h-8 flex items-center justify-center shadow-md" data-id="1" data-name="Oversized Basic Tee" data-price="39.99" data-image="https://readdy.ai/api/search-image?query=Stylish%20oversized%20white%20t-shirt%20with%20minimal%20design%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=2&orientation=portrait">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-sm font-medium truncate">Oversized Basic Tee</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-semibold">₱2,199</span>
+<span class="text-xs text-gray-500">S/M/L/XL</span>
+</div>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=Black%20baggy%20cargo%20pants%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=3&orientation=portrait" alt="Cargo Pants" class="w-full h-44 object-cover object-top">
+<button class="quick-add absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full w-8 h-8 flex items-center justify-center shadow-md" data-id="2" data-name="Cargo Baggy Pants" data-price="59.99" data-image="https://readdy.ai/api/search-image?query=Black%20baggy%20cargo%20pants%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=3&orientation=portrait">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-sm font-medium truncate">Cargo Baggy Pants</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-semibold">₱3,299</span>
+<span class="text-xs text-gray-500">S/M/L/XL</span>
+</div>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=Minimalist%20silver%20chain%20necklace%2C%20high-quality%20jewelry%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20accessory%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=4&orientation=portrait" alt="Silver Chain" class="w-full h-44 object-cover object-top">
+<button class="quick-add absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full w-8 h-8 flex items-center justify-center shadow-md" data-id="3" data-name="Silver Chain Necklace" data-price="29.99" data-image="https://readdy.ai/api/search-image?query=Minimalist%20silver%20chain%20necklace%2C%20high-quality%20jewelry%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20accessory%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=4&orientation=portrait">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-sm font-medium truncate">Silver Chain Necklace</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-semibold">₱1,649</span>
+<span class="text-xs text-gray-500">One Size</span>
+</div>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=Vintage%20graphic%20t-shirt%20with%20retro%20design%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=5&orientation=portrait" alt="Graphic Tee" class="w-full h-44 object-cover object-top">
+<button class="quick-add absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full w-8 h-8 flex items-center justify-center shadow-md" data-id="4" data-name="Vintage Graphic Tee" data-price="45.99" data-image="https://readdy.ai/api/search-image?query=Vintage%20graphic%20t-shirt%20with%20retro%20design%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=5&orientation=portrait">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-sm font-medium truncate">Vintage Graphic Tee</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-semibold">₱2,529</span>
+<span class="text-xs text-gray-500">S/M/L/XL</span>
+</div>
+</div>
+</div>
+</div>
+<h2 class="text-xl font-semibold mb-4">Best Sellers</h2>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<!-- Product 5 -->
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=Beige%20wide-leg%20baggy%20pants%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=6&orientation=portrait" alt="Wide Leg Pants" class="w-full h-44 object-cover object-top">
+<button class="quick-add absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full w-8 h-8 flex items-center justify-center shadow-md" data-id="5" data-name="Wide Leg Baggy Pants" data-price="65.99" data-image="https://readdy.ai/api/search-image?query=Beige%20wide-leg%20baggy%20pants%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=6&orientation=portrait">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-sm font-medium truncate">Wide Leg Baggy Pants</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-semibold">₱3,629</span>
+<span class="text-xs text-gray-500">S/M/L/XL</span>
+</div>
+</div>
+</div>
+<!-- Product 6 -->
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=Minimalist%20black%20beanie%20hat%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20accessory%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=7&orientation=portrait" alt="Beanie Hat" class="w-full h-44 object-cover object-top">
+<button class="quick-add absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full w-8 h-8 flex items-center justify-center shadow-md" data-id="6" data-name="Essential Beanie Hat" data-price="24.99" data-image="https://readdy.ai/api/search-image?query=Minimalist%20black%20beanie%20hat%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20accessory%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=7&orientation=portrait">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-sm font-medium truncate">Essential Beanie Hat</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-semibold">₱1,374</span>
+<span class="text-xs text-gray-500">One Size</span>
+</div>
+</div>
+</div>
+<!-- Product 7 -->
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=Oversized%20black%20t-shirt%20with%20minimal%20design%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=8&orientation=portrait" alt="Black Tee" class="w-full h-44 object-cover object-top">
+<button class="quick-add absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full w-8 h-8 flex items-center justify-center shadow-md" data-id="7" data-name="Premium Black Tee" data-price="42.99" data-image="https://readdy.ai/api/search-image?query=Oversized%20black%20t-shirt%20with%20minimal%20design%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=8&orientation=portrait">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-sm font-medium truncate">Premium Black Tee</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-semibold">₱2,364</span>
+<span class="text-xs text-gray-500">S/M/L/XL</span>
+</div>
+</div>
+</div>
+<!-- Product 8 -->
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=Stylish%20minimalist%20watch%20with%20leather%20strap%2C%20high-quality%20accessory%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=9&orientation=portrait" alt="Leather Watch" class="w-full h-44 object-cover object-top">
+<button class="quick-add absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full w-8 h-8 flex items-center justify-center shadow-md" data-id="8" data-name="Leather Strap Watch" data-price="89.99" data-image="https://readdy.ai/api/search-image?query=Stylish%20minimalist%20watch%20with%20leather%20strap%2C%20high-quality%20accessory%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=9&orientation=portrait">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-sm font-medium truncate">Leather Strap Watch</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-semibold">₱4,949</span>
+<span class="text-xs text-gray-500">One Size</span>
+</div>
+</div>
+</div>
+</div>
+<h2 class="text-xl font-semibold mb-4">Trending Now</h2>
+<div class="grid grid-cols-2 gap-4">
+<!-- Product 9 -->
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=Olive%20green%20cargo%20baggy%20pants%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=10&orientation=portrait" alt="Cargo Pants" class="w-full h-44 object-cover object-top">
+<button class="quick-add absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full w-8 h-8 flex items-center justify-center shadow-md" data-id="9" data-name="Olive Cargo Pants" data-price="69.99" data-image="https://readdy.ai/api/search-image?query=Olive%20green%20cargo%20baggy%20pants%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=10&orientation=portrait">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-sm font-medium truncate">Olive Cargo Pants</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-semibold">₱3,849</span>
+<span class="text-xs text-gray-500">S/M/L/XL</span>
+</div>
+</div>
+</div>
+<!-- Product 10 -->
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=Minimalist%20gold%20hoop%20earrings%2C%20high-quality%20jewelry%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20accessory%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=11&orientation=portrait" alt="Gold Hoops" class="w-full h-44 object-cover object-top">
+<button class="quick-add absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full w-8 h-8 flex items-center justify-center shadow-md" data-id="10" data-name="Gold Hoop Earrings" data-price="34.99" data-image="https://readdy.ai/api/search-image?query=Minimalist%20gold%20hoop%20earrings%2C%20high-quality%20jewelry%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20accessory%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=11&orientation=portrait">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-sm font-medium truncate">Gold Hoop Earrings</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-semibold">₱1,924</span>
+<span class="text-xs text-gray-500">One Size</span>
+</div>
+</div>
+</div>
+<!-- Product 11 -->
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=Tie-dye%20oversized%20t-shirt%2C%20colorful%20design%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=12&orientation=portrait" alt="Tie-Dye Tee" class="w-full h-44 object-cover object-top">
+<button class="quick-add absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full w-8 h-8 flex items-center justify-center shadow-md" data-id="11" data-name="Tie-Dye Oversized Tee" data-price="49.99" data-image="https://readdy.ai/api/search-image?query=Tie-dye%20oversized%20t-shirt%2C%20colorful%20design%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=12&orientation=portrait">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-sm font-medium truncate">Tie-Dye Oversized Tee</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-semibold">₱2,749</span>
+<span class="text-xs text-gray-500">S/M/L/XL</span>
+</div>
+</div>
+</div>
+<!-- Product 12 -->
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=Denim%20baggy%20jeans%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=13&orientation=portrait" alt="Denim Jeans" class="w-full h-44 object-cover object-top">
+<button class="quick-add absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full w-8 h-8 flex items-center justify-center shadow-md" data-id="12" data-name="Baggy Denim Jeans" data-price="79.99" data-image="https://readdy.ai/api/search-image?query=Denim%20baggy%20jeans%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=13&orientation=portrait">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-sm font-medium truncate">Baggy Denim Jeans</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-semibold">₱4,399</span>
+<span class="text-xs text-gray-500">S/M/L/XL</span>
+</div>
+</div>
+</div>
+<!-- Product 13 -->
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=Minimalist%20bucket%20hat%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20accessory%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=14&orientation=portrait" alt="Bucket Hat" class="w-full h-44 object-cover object-top">
+<button class="quick-add absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full w-8 h-8 flex items-center justify-center shadow-md" data-id="13" data-name="Essential Bucket Hat" data-price="32.99" data-image="https://readdy.ai/api/search-image?query=Minimalist%20bucket%20hat%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20accessory%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=14&orientation=portrait">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-sm font-medium truncate">Essential Bucket Hat</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-semibold">₱1,814</span>
+<span class="text-xs text-gray-500">One Size</span>
+</div>
+</div>
+</div>
+<!-- Product 14 -->
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=Striped%20oversized%20t-shirt%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=15&orientation=portrait" alt="Striped Tee" class="w-full h-44 object-cover object-top">
+<button class="quick-add absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full w-8 h-8 flex items-center justify-center shadow-md" data-id="14" data-name="Striped Oversized Tee" data-price="44.99" data-image="https://readdy.ai/api/search-image?query=Striped%20oversized%20t-shirt%2C%20high-quality%20fabric%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20item%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=15&orientation=portrait">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-sm font-medium truncate">Striped Oversized Tee</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-semibold">₱2,474</span>
+<span class="text-xs text-gray-500">S/M/L/XL</span>
+</div>
+</div>
+</div>
+<!-- Product 15 -->
+<div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=Minimalist%20silver%20bracelet%2C%20high-quality%20jewelry%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20accessory%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=16&orientation=portrait" alt="Silver Bracelet" class="w-full h-44 object-cover object-top">
+<button class="quick-add absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full w-8 h-8 flex items-center justify-center shadow-md" data-id="15" data-name="Silver Chain Bracelet" data-price="27.99" data-image="https://readdy.ai/api/search-image?query=Minimalist%20silver%20bracelet%2C%20high-quality%20jewelry%2C%20product%20photography%20on%20plain%20background%2C%20fashion%20accessory%2C%20clean%20aesthetic%2C%20professional%20lighting%2C%20centered%20composition&width=180&height=220&seq=16&orientation=portrait">
+<i class="ri-add-line"></i>
+</button>
+</div>
+<div class="p-3">
+<h3 class="text-sm font-medium truncate">Silver Chain Bracelet</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-semibold">₱1,539</span>
+<span class="text-xs text-gray-500">One Size</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Cart Panel -->
+<div id="cart-panel" class="cart-panel fixed top-0 right-0 w-full h-full bg-white z-50 shadow-xl">
+<div class="flex flex-col h-full">
+<!-- Cart Header -->
+<div class="p-4 border-b flex items-center justify-between">
+<h2 class="text-xl font-semibold">Your Cart</h2>
+<button id="close-cart" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<!-- Cart Items -->
+<div id="cart-items" class="flex-1 overflow-y-auto p-4">
+<div class="empty-cart text-center py-10">
+<div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-gray-100 rounded-full">
+<i class="ri-shopping-bag-line ri-2x text-gray-400"></i>
+</div>
+<p class="text-gray-500">Your cart is empty</p>
+<button id="start-shopping" class="mt-4 px-4 py-2 bg-primary text-white rounded-button text-sm">Start Shopping</button>
+</div>
+</div>
+<!-- Cart Total -->
+<div id="cart-total" class="p-4 border-t bg-gray-50" style="display: none;">
+<div class="flex justify-between mb-2">
+<span class="text-gray-600">Subtotal</span>
+<span id="subtotal" class="font-medium">$0.00</span>
+</div>
+<div class="flex justify-between mb-4">
+<span class="text-gray-600">Shipping</span>
+<span id="shipping" class="font-medium">₱329</span>
+</div>
+<div class="flex justify-between mb-6">
+<span class="font-semibold">Total</span>
+<span id="total" class="font-semibold text-lg">$0.00</span>
+</div>
+<button id="checkout-btn" class="w-full py-3 bg-primary text-white rounded-button font-medium">Proceed to Checkout</button>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-[calc(100%-48px)] bg-white rounded-2xl shadow-xl shadow-gray-200/50 z-40">
+<div class="grid grid-cols-4 py-1">
+<a href="#" class="flex flex-col items-center py-3 text-primary relative">
+<div class="w-10 h-10 flex items-center justify-center">
+<i class="ri-home-5-fill ri-xl"></i>
+</div>
+<span class="text-xs font-medium mt-0.5">Home</span>
+<span class="absolute top-0 left-1/2 transform -translate-x-1/2 w-10 h-1 bg-primary rounded-full"></span>
+</a>
+<a href="#" class="flex flex-col items-center py-3 text-gray-400 hover:text-gray-600 transition-colors">
+<div class="w-10 h-10 flex items-center justify-center">
+<i class="ri-apps-line ri-xl"></i>
+</div>
+<span class="text-xs font-medium mt-0.5">Categories</span>
+</a>
+<a href="#" class="flex flex-col items-center py-3 text-gray-400 hover:text-gray-600 transition-colors" id="nav-cart">
+<div class="w-10 h-10 flex items-center justify-center">
+<i class="ri-shopping-bag-line ri-xl"></i>
+</div>
+<span class="text-xs font-medium mt-0.5">Cart</span>
+</a>
+<a href="#" class="flex flex-col items-center py-3 text-gray-400 hover:text-gray-600 transition-colors">
+<div class="w-10 h-10 flex items-center justify-center">
+<i class="ri-user-line ri-xl"></i>
+</div>
+<span class="text-xs font-medium mt-0.5">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Cart Functionality -->
+<script id="cart-manager">
+document.addEventListener('DOMContentLoaded', function() {
+// Cart state
+let cart = [];
+let cartCount = 0;
+// DOM Elements
+const cartPanel = document.getElementById('cart-panel');
+const cartIcon = document.getElementById('cart-icon');
+const navCart = document.getElementById('nav-cart');
+const closeCart = document.getElementById('close-cart');
+const cartItems = document.getElementById('cart-items');
+const cartCountElement = document.getElementById('cart-count');
+const cartTotal = document.getElementById('cart-total');
+const subtotalElement = document.getElementById('subtotal');
+const totalElement = document.getElementById('total');
+const startShopping = document.getElementById('start-shopping');
+const checkoutBtn = document.getElementById('checkout-btn');
+// Add to cart buttons
+const quickAddButtons = document.querySelectorAll('.quick-add');
+// Open cart panel
+function openCart() {
+cartPanel.classList.add('open');
+document.body.style.overflow = 'hidden';
+}
+// Close cart panel
+function closeCartPanel() {
+cartPanel.classList.remove('open');
+document.body.style.overflow = 'auto';
+}
+// Update cart count
+function updateCartCount() {
+cartCountElement.textContent = cartCount;
+}
+// Calculate totals
+function calculateTotals() {
+const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+const shipping = subtotal > 0 ? 329 : 0;
+const total = subtotal + shipping;
+subtotalElement.textContent = `₱${Math.round(subtotal)}`;
+totalElement.textContent = `₱${Math.round(total)}`;
+// Show/hide total section
+if (cart.length > 0) {
+cartTotal.style.display = 'block';
+} else {
+cartTotal.style.display = 'none';
+}
+}
+// Render cart items
+function renderCart() {
+if (cart.length === 0) {
+cartItems.innerHTML = `
+<div class="empty-cart text-center py-10">
+<div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-gray-100 rounded-full">
+<i class="ri-shopping-bag-line ri-2x text-gray-400"></i>
+</div>
+<p class="text-gray-500">Your cart is empty</p>
+<button id="start-shopping" class="mt-4 px-4 py-2 bg-primary text-white rounded-button text-sm">Start Shopping</button>
+</div>
+`;
+document.getElementById('start-shopping').addEventListener('click', closeCartPanel);
+} else {
+let cartHTML = '';
+cart.forEach(item => {
+cartHTML += `
+<div class="flex items-center py-4 border-b" data-id="${item.id}">
+<img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg">
+<div class="ml-4 flex-1">
+<h3 class="text-sm font-medium">${item.name}</h3>
+<p class="text-primary font-semibold mt-1">₱${item.price}</p>
+<div class="flex items-center mt-2">
+<button class="quantity-btn minus w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full" data-id="${item.id}">
+<i class="ri-subtract-line"></i>
+</button>
+<span class="mx-3">${item.quantity}</span>
+<button class="quantity-btn plus w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full" data-id="${item.id}">
+<i class="ri-add-line"></i>
+</button>
+</div>
+</div>
+<button class="remove-item ml-2 w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full" data-id="${item.id}">
+<i class="ri-delete-bin-line text-gray-500"></i>
+</button>
+</div>
+`;
+});
+cartItems.innerHTML = cartHTML;
+// Add event listeners to quantity buttons
+document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+btn.addEventListener('click', function() {
+const id = this.getAttribute('data-id');
+decreaseQuantity(id);
+});
+});
+document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+btn.addEventListener('click', function() {
+const id = this.getAttribute('data-id');
+increaseQuantity(id);
+});
+});
+// Add event listeners to remove buttons
+document.querySelectorAll('.remove-item').forEach(btn => {
+btn.addEventListener('click', function() {
+const id = this.getAttribute('data-id');
+removeItem(id);
+});
+});
+}
+calculateTotals();
+}
+// Add item to cart
+function addToCart(id, name, price, image) {
+const existingItem = cart.find(item => item.id === id);
+if (existingItem) {
+existingItem.quantity += 1;
+} else {
+cart.push({
+id,
+name,
+price: parseFloat(price),
+image,
+quantity: 1
+});
+}
+cartCount += 1;
+updateCartCount();
+renderCart();
+// Show quick feedback
+const addedFeedback = document.createElement('div');
+addedFeedback.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white py-2 px-4 rounded-full text-sm z-50';
+addedFeedback.textContent = 'Added to cart';
+document.body.appendChild(addedFeedback);
+setTimeout(() => {
+addedFeedback.remove();
+}, 1500);
+}
+// Increase item quantity
+function increaseQuantity(id) {
+const item = cart.find(item => item.id === id);
+if (item) {
+item.quantity += 1;
+cartCount += 1;
+updateCartCount();
+renderCart();
+}
+}
+// Decrease item quantity
+function decreaseQuantity(id) {
+const item = cart.find(item => item.id === id);
+if (item) {
+item.quantity -= 1;
+cartCount -= 1;
+if (item.quantity === 0) {
+cart = cart.filter(cartItem => cartItem.id !== id);
+}
+updateCartCount();
+renderCart();
+}
+}
+// Remove item from cart
+function removeItem(id) {
+const item = cart.find(item => item.id === id);
+if (item) {
+cartCount -= item.quantity;
+cart = cart.filter(cartItem => cartItem.id !== id);
+updateCartCount();
+renderCart();
+}
+}
+// Event Listeners
+cartIcon.addEventListener('click', openCart);
+navCart.addEventListener('click', openCart);
+closeCart.addEventListener('click', closeCartPanel);
+quickAddButtons.forEach(button => {
+button.addEventListener('click', function(e) {
+e.stopPropagation();
+const id = this.getAttribute('data-id');
+const name = this.getAttribute('data-name');
+const price = this.getAttribute('data-price');
+const image = this.getAttribute('data-image');
+addToCart(id, name, price, image);
+});
+});
+checkoutBtn.addEventListener('click', function() {
+const checkoutFeedback = document.createElement('div');
+checkoutFeedback.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-lg z-50 text-center';
+checkoutFeedback.innerHTML = `
+<div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary/10 text-primary rounded-full">
+<i class="ri-check-line ri-2x"></i>
+</div>
+<h3 class="text-lg font-semibold mb-2">Order Placed!</h3>
+<p class="text-gray-600 mb-4">Your order has been successfully placed.</p>
+<button id="continue-shopping" class="w-full py-2 bg-primary text-white rounded-button">Continue Shopping</button>
+`;
+document.body.appendChild(checkoutFeedback);
+document.getElementById('continue-shopping').addEventListener('click', function() {
+checkoutFeedback.remove();
+cart = [];
+cartCount = 0;
+updateCartCount();
+renderCart();
+closeCartPanel();
+});
+});
+// Initialize
+updateCartCount();
+renderCart();
+});
+</script>
+</body>
+</html>
